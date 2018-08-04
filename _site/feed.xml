@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-04T23:06:38+05:30</updated><id>http://localhost:4000/</id><title type="html">Shreyash Agarwal’s Blog</title><subtitle>Hi! My name is Shreyash Agarwal. I love coding. I am interested in the fields of computer vision and machine learning. I was born and brought up in Kolkata, India and I have loved computers since the time I got my hands on them. I also enjoy listening to music!</subtitle><entry><title type="html">Pointers for Pipenv</title><link href="http://localhost:4000/2018/04/09/pointers-for-python.html" rel="alternate" type="text/html" title="Pointers for Pipenv" /><published>2018-04-09T00:00:00+05:30</published><updated>2018-04-09T00:00:00+05:30</updated><id>http://localhost:4000/2018/04/09/pointers-for-python</id><content type="html" xml:base="http://localhost:4000/2018/04/09/pointers-for-python.html">&lt;p&gt;Pipenv is a great tool to use, read more about pipenv &lt;a href=&quot;https://github.com/pypa/pipenv&quot;&gt;&lt;strong&gt;HERE&lt;/strong&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pipenv generated a lock file that is useful in replicating an exact virutal environment, which can be useful in a lot of cases.&lt;/p&gt;
+
+&lt;p&gt;The best way to install pipenv is to install it using pip but locally, so that all the pipenv environments are also in the .local/ folder inside the user directory.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;pip &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-U&lt;/span&gt; pipenv&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Pipenv works with pew (read more about pew &lt;a href=&quot;https://github.com/berdario/pew&quot;&gt;&lt;strong&gt;HERE&lt;/strong&gt;&lt;/a&gt; ) to create the virtual environments.&lt;/p&gt;
+
+&lt;p&gt;Though pipenv provides the ability to store the virtual environment inside the project folder by setting the &lt;em&gt;VENV_IN_PROJECT&lt;/em&gt; environment variable, I prefer not using it like that. There are a couple of benefits to this -&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;This allows me to keep the codebase isolated from the runtime environment and simply zipping up the code is a much easier process.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Having the virtual environment inside the home directory of the user allows for scheduling cron jobs using the user space where the cron job is consequently able to find the virtual environment.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Pipenv is a great tool to use, read more about pipenv HERE.</summary></entry><entry><title type="html">Implementing High Scores in Android</title><link href="http://localhost:4000/2017/08/13/implementing-high-scores-in-android.html" rel="alternate" type="text/html" title="Implementing High Scores in Android" /><published>2017-08-13T00:00:00+05:30</published><updated>2017-08-13T00:00:00+05:30</updated><id>http://localhost:4000/2017/08/13/implementing-high-scores-in-android</id><content type="html" xml:base="http://localhost:4000/2017/08/13/implementing-high-scores-in-android.html">&lt;p&gt;To implement high scores in an Android game, there are a few options-&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;To use LocalStorage.&lt;/li&gt;
+  &lt;li&gt;To use a DB locally.&lt;/li&gt;
+  &lt;li&gt;To use a cloud based DB service, such as FireCloud.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In this post I will be describing about how I have implemented highscores for my application QuizApp using LocalStorage. I will be talking about the other two in a later post.&lt;/p&gt;
+
+&lt;p&gt;SharedPreferences is used to setup an acess to key-value pairs that can be stored locally on the device. A key needs to be supplied for identifying the StoredPreferences uniquely, here we are using &lt;strong&gt;myPrefsKey&lt;/strong&gt; as the identifier.&lt;/p&gt;
+
+&lt;p&gt;SharedPreferences differs from Preferences as it can be accessed across activities, which is required nice the Highscore might be required to beaccessible from more than one Activity.&lt;/p&gt;
+
+&lt;p&gt;The high score can be saved in the Preferences by identifying it with a &lt;em&gt;unique&lt;/em&gt; key for high-scores in a similar manner to how we used myPrefsKey to &lt;em&gt;uniquely&lt;/em&gt; identify the Preferences store. I have used &lt;strong&gt;highScore&lt;/strong&gt; as a key for my HighScore key inside the SharedPreferences store.&lt;/p&gt;
+
+&lt;h1 id=&quot;this-is-how-to-set-the-high-score--&quot;&gt;This is how to set the high score -&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setHighScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SharedPreferences&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedPref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSharedPreferences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myPrefsKey&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;MODE_PRIVATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SharedPreferences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Editor&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedPref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;edit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;putInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highScore&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;editor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;WRITTEN highscore&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;score&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;to preferences &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;A SharedPreferences Editor is required to be called upon our SharedPreferences folder ( which is uniquely identified by myPrefsKey ). On the editor, the putInt method is called to set the score on the high score key ( highScore). &lt;strong&gt;It is important&lt;/strong&gt; to follow up changes made by the editor with a commit call, as it writes the changes to our SharedPreferences store.&lt;/p&gt;
+
+&lt;h1 id=&quot;this-is-how-we-can-get-the-high-score-from-the-sharedpreferences&quot;&gt;This is how we can get the high score from the sharedPreferences.&lt;/h1&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getHighScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;SharedPreferences&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedPref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSharedPreferences&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;myPrefsKey&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;MODE_PRIVATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sharedPref&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highScore&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getHighScore: &quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;highScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highScore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the latest release of QuizApp (v0.1.1), which has integrated High Scores as I have mentioned here -
+&lt;a href=&quot;https://github.com/shreyashag/QuizApp/releases/&quot;&gt;github.com/shreyashag/QuizApp/releases/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I am currently thinking about giving the app a fresh look and you contact me on twitter at &lt;a href=&quot;https://twitter.com/shreyash_ag&quot;&gt;@shreyash_ag&lt;/a&gt; if you have any ideas!&lt;/p&gt;</content><author><name></name></author><summary type="html">To implement high scores in an Android game, there are a few options- To use LocalStorage. To use a DB locally. To use a cloud based DB service, such as FireCloud.</summary></entry><entry><title type="html">QuizApp! for Android- What I learned developing my own quiz app</title><link href="http://localhost:4000/2017/07/28/quizapp-for-android-what-i-learned-developing-my-own-quiz-app.html" rel="alternate" type="text/html" title="QuizApp! for Android- What I learned developing my own quiz app" /><published>2017-07-28T00:00:00+05:30</published><updated>2017-07-28T00:00:00+05:30</updated><id>http://localhost:4000/2017/07/28/quizapp-for-android-what-i-learned-developing-my-own-quiz-app</id><content type="html" xml:base="http://localhost:4000/2017/07/28/quizapp-for-android-what-i-learned-developing-my-own-quiz-app.html">&lt;p&gt;I have been using Android for the longest time I can remember, and I have never owned an iPhone. I love the Android platform and the openness it provides. My current device is a OnePlus One that is running Slim7 ROM.&lt;/p&gt;
+
+&lt;p&gt;Android development has been on and off for me, but I was pretty familiar with Android because of my experience working in Ionic framework and a course in my college Curriculum called Mobile Application Development. I thought of creating an App for myself, and here is QuizApp!.&lt;/p&gt;
+
+&lt;p&gt;QuizApp was developed using Android Studio, and how the application works is briefly explained here. The MainActivity asks the user to select the type of Quiz they would like to play. The App then loads the QuizActivity and feteches the quiz from OpenTriviaDatabase.&lt;/p&gt;
+
+&lt;p&gt;The view contains a TextViews for keeping track of score, number of questions and also for the question itself. The answers are present in a set of RadioGroup RadioButtons.&lt;/p&gt;
+
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/Screenshot_1.png&quot; width=&quot;300&quot; /&gt;
+        &lt;figcaption&gt;Main Activity&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/Screenshot_2.png&quot; width=&quot;300&quot; /&gt;
+        &lt;figcaption&gt;Selecting the quiz category&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;When the QuizActivity loads, the layout loads the first question. Subsequently on clicking of the next button, the currently selected answer is checked and the Views are refreshed to contain the next question and the updated score.&lt;/p&gt;
+
+&lt;p&gt;For fetching the API request, I made use of Volley library, as it is well documented in the Android Developer Docs. 
+MediaPlayer was used for playing the songs. One issue I encountered was while playing multiple sounds, as soon as the second started, the first would stop playing. The solution to this was to pause the previously playing instance and then play it again after initiating the second playback.&lt;/p&gt;
+
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/Screenshot_4.png&quot; width=&quot;300&quot; /&gt;
+        &lt;figcaption&gt;The Quiz Activity.. I'm getting better at this, don't worry!&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Looking Ahead
+I have started on the design and am thinking about how to implement Material Design for QuizApp!&lt;/p&gt;
+
+&lt;p&gt;A nicer version of the application would use CardView or RecyclerView (going to be implemented soon) for the main quiz activity.&lt;/p&gt;
+
+&lt;p&gt;Also, the ScoreActivity is very,very,very basic. It literally has just a textview and a button right now. Lots of work to do on the UI! The category selector can be implemented as clickable cards with a background reperesenting the category with a text overlay.&lt;/p&gt;
+
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/Screenshot_5.png&quot; width=&quot;300&quot; /&gt;
+        &lt;figcaption&gt;The Score Activity&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Probably some animated baloons or confetti on the Score screen?  And need to find a better way than using Toast messages to let the users know if they were correct or wrong!&lt;/p&gt;
+
+&lt;p&gt;Managing the LifeCycle and NavigationBar have not been implemented yet and are also on the tasklist.&lt;/p&gt;
+
+&lt;p&gt;I will be updating the app soon and will hopefully be uploading to the Play Store soon too. You can check it out on GitHub here- &lt;a href=&quot;https://github.com/shreyashag/QuizApp&quot;&gt;https://github.com/shreyashag/QuizApp&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Thank you for reading and stay tuned!&lt;/p&gt;</content><author><name></name></author><summary type="html">I have been using Android for the longest time I can remember, and I have never owned an iPhone. I love the Android platform and the openness it provides. My current device is a OnePlus One that is running Slim7 ROM.</summary></entry><entry><title type="html">How I got HTTPS for free for my domain</title><link href="http://localhost:4000/2017/07/21/how-i-got-https-for-free-for-my-domain.html" rel="alternate" type="text/html" title="How I got HTTPS for free for my domain" /><published>2017-07-21T00:00:00+05:30</published><updated>2017-07-21T00:00:00+05:30</updated><id>http://localhost:4000/2017/07/21/how-i-got-https-for-free-for-my-domain</id><content type="html" xml:base="http://localhost:4000/2017/07/21/how-i-got-https-for-free-for-my-domain.html">&lt;p&gt;Getting https in important in today’s world, it conveys authenticity and trust to the user visiting a website. From &lt;a href=&quot;https://developers.google.com/web/fundamentals/security/encrypt-in-transit/why-https&quot;&gt;what Google has to say about HTTPS&lt;/a&gt;-&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTTPS protects the integrity of your website&lt;/li&gt;
+  &lt;li&gt;HTTPS protects the privacy and security of your users&lt;/li&gt;
+  &lt;li&gt;HTTPS is the future of the web&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;how-can-you-get-https-for-free&quot;&gt;How can you get HTTPS for free?&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;https://www.cloudflare.com/a/sign-up&quot;&gt;Cloudflare.com&lt;/a&gt; and create a new account.&lt;/li&gt;
+  &lt;li&gt;After creating your account, register your domain name with Cloudflare. This can be done with a free plan for personal use.  DNS Records will be imported to Cloudflare when the domain is added. We need to ensure that we have enabled DNS and HTTP proxy for our records.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-21-how-i-got-https-for-free-for-my-domain/cloudflare.png&quot; /&gt;
+        &lt;figcaption&gt;This (the orange cloud) means that we are using the CDN provided by Cloudflare for our domain.&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;In this step, you will also need to update the nameservers of the domain name to the ones provided by cloudflare. To do this, you will need to go to the control panel of your domain name registrar and edit the nameservers. For my domain it looks like this in the Godaddy&amp;gt;Manage Domains&amp;gt;Manage DNS&amp;gt;Nameservers.&lt;/p&gt;
+&lt;div&gt;
+
+
+    &lt;figure&gt;
+        &lt;img class=&quot;my-image&quot; src=&quot;/assets/posts/2017-07-21-how-i-got-https-for-free-for-my-domain/godaddy-nameservers.png&quot; /&gt;
+        &lt;figcaption&gt;This is how it looks on my GoDaddy Control panel&lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This will probably take some time to reflect across the different servers across the world. This is called DNS Propogation. To learn more about DNS Propogation, &lt;a href=&quot;&quot;&gt;click here&lt;/a&gt;. You can check the propogation status using some tool. Here is a website which I used &lt;a href=&quot;https://www.whatsmydns.net/#NS/shreyashagarwal.in&quot;&gt;What’s My DNS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Once that is done, inside the Cloudflare panel, you need to go to the Crypto tab, and set SSL to flexible. I haven’t tried setting it to a higher setting as of now, and it works in the setup I am using.&lt;br /&gt;
+Also set the  Always Use HTTPS slider to On.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That’s it! In some time, the DNS servers will now point to Cloudflare for your domain name and Cloudflare will also have activated HTTPS for the domain name. You can start using https in your domain!&lt;/p&gt;
+
+&lt;p&gt;Here are a few other things you can do using Cloudflare-&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Enable DNSSEC - DNSSEC protects against forged DNS answers. DNSSEC protected zones are cryptographically signed to ensure the DNS records received are identical to the DNS records published by the domain owner.&lt;/li&gt;
+  &lt;li&gt;Enable caching, I’ve implemented a rule in Cloudflare to do this, 3 rules can be setup in Cloudflare.&lt;/li&gt;
+  &lt;li&gt;Auto-minify code for HTML, CSS and JS files.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We need to keep in mind that our domain will be served using CDN of Cloudflare. We got HTTPS for free and our now serving our pages using CDN, that can also provide for caching . Hooray!&lt;/p&gt;
+
+&lt;p&gt;I mentioned about my setup here, and I am using Jekyll and GitHub Pages which can be read on &lt;a href=&quot;/introduction/2017/07/19/welcome-to-my-blog.html&quot;&gt;my previous blog post.&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Getting https in important in today’s world, it conveys authenticity and trust to the user visiting a website. From what Google has to say about HTTPS- HTTPS protects the integrity of your website HTTPS protects the privacy and security of your users HTTPS is the future of the web</summary></entry><entry><title type="html">Welcome to My Blog!</title><link href="http://localhost:4000/introduction/2017/07/19/welcome-to-my-blog.html" rel="alternate" type="text/html" title="Welcome to My Blog!" /><published>2017-07-19T00:00:00+05:30</published><updated>2017-07-19T00:00:00+05:30</updated><id>http://localhost:4000/introduction/2017/07/19/welcome-to-my-blog</id><content type="html" xml:base="http://localhost:4000/introduction/2017/07/19/welcome-to-my-blog.html">&lt;p&gt;Hello and welcome to my blog. You can read more about me &lt;a href=&quot;http://shreyashagarwal.in/personal-page/about&quot;&gt;here&lt;/a&gt;. I have previously used blogs on wordpress and blogger. On wordpress to write a blog called Pi2Projects, where I wrote about my experiments with the Raspberry Pi 2. I have pulled the blog down, and now this blog will be my main blogging medium now.&lt;/p&gt;
+
+&lt;p&gt;Speaking of medium, I also have a profile there, you can follow me &lt;a href=&quot;https://medium.com/@shreyashag&quot;&gt;@shreyashag&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I am using Jekyll to write this blog, which is a new experience for me but the workflow is a lot of fun. The post is written in Markdown format, and a commit generates the site for me thanks to Github Pages.
+I may consider moving the blog off Github Pages, because of some of the limitations of using Jekyll on Github Pages, such as being able to use only gems that are whitelisted by GitHub Pages. However, that will only happen when I need such functionality.
+Moreover, Jekyll provides for programmability, so if the functionality is not too complex, I’ll probably code it myself or search for it on the net.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is actively developed and has a huge following. Despite having to use a Ruby environment (something I am new to), I am so far finding the experience fun.&lt;/p&gt;
+
+&lt;p&gt;I also developed a webpage for myself, that can be opened by clicking on my name at the header on this page. (Or you can click on &lt;a href=&quot;https://shreyashagarwal.in/personal-page&quot;&gt;https://shreyashagarwal.in/personal-page&lt;/a&gt;). I used Typed.Js for the slick typing animation on the homepage and the design was using the Bootstrap Cover template ( which can be found in the examples folder of the Bootstrap source folder on github).&lt;/p&gt;
+
+&lt;p&gt;Oh and when you see the webpage, check out the awesome social icons at the bottom. They were designed using Font-Awesome. Also follow me on twitter! &lt;a href=&quot;https://twitter.com/shreyash_ag&quot;&gt;@shreyash_ag&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;More posts coming soon, and in the next one I’m going to explain how I got https for my domain for free!&lt;/p&gt;</content><author><name></name></author><summary type="html">Hello and welcome to my blog. You can read more about me here. I have previously used blogs on wordpress and blogger. On wordpress to write a blog called Pi2Projects, where I wrote about my experiments with the Raspberry Pi 2. I have pulled the blog down, and now this blog will be my main blogging medium now.</summary></entry></feed>

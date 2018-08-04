@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+        {{ page.date | date: date_format }}
+      </time>
+      {% include time-to-read.html wordCount=page.content%}
+
+      {% if page.author %}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+      {% endif %}</p>
+
+
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {% if site.disqus.shortname %}
+    {% include disqus_comments.html %}
+  {% endif %}
+
+  <div class="posts--previous-next">
+    {% if page.previous %}
+      <span class="pagination-title previous">
+        Previously, <a href="{{ page.previous.url }}">{{ page.previous.title }}</a> on {{ page.previous.date | date_to_string }}
+      </span>
+    {% endif %}
+    {% if page.next %}
+      <span class="pagination-title next">
+        After this, I wrote <a href="{{ page.next.url }}">{{ page.next.title }}</a> on {{ page.next.date | date_to_string }}
+      </span>
+    {% endif %}
+  </div>
+
+
+</article>
