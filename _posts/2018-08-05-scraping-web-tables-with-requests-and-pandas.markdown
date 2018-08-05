@@ -9,7 +9,7 @@ Hey everyone,
 It's been a long time since I posted something, I've been busy with work and other things.
 I've written a lot of scrapes recently and while trying to reduce the code I would have to write, I stumbled upon something.
 
-Have you heard on <a href='https://pandas.pydata.org/'>Pandas?</a>
+Have you heard about <a href='https://pandas.pydata.org/'>Pandas?</a>
 
 It's a fantastic library which not only is useful for maintaining data structures in it's famous Dataframe, but also helped me cut out BeautifulSoup (another awesome library which I used to use for web parsing) completely!
 
