@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-08-05T18:13:01+05:30</updated><id>/</id><title type="html">Shreyash Agarwal’s Blog</title><subtitle>Hi! My name is Shreyash Agarwal. I love coding. I am interested in the fields of computer vision and machine learning. I was born and brought up in Kolkata, India and I have loved computers since the time I got my hands on them. I also enjoy listening to music!</subtitle><entry><title type="html">Scraping web tables with requests and pandas</title><link href="/web/2018/08/05/scraping-web-tables-with-requests-and-pandas.html" rel="alternate" type="text/html" title="Scraping web tables with requests and pandas" /><published>2018-08-05T00:00:00+05:30</published><updated>2018-08-05T00:00:00+05:30</updated><id>/web/2018/08/05/scraping-web-tables-with-requests-and-pandas</id><content type="html" xml:base="/web/2018/08/05/scraping-web-tables-with-requests-and-pandas.html">&lt;p&gt;Hey everyone,&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-05-24T19:44:23+05:30</updated><id>/</id><title type="html">Shreyash Agarwal’s Blog</title><subtitle>Hi! My name is Shreyash Agarwal. I love coding. I am interested in the fields of computer vision and machine learning. I was born and brought up in Kolkata, India and I have loved computers since the time I got my hands on them. I also enjoy listening to music!</subtitle><entry><title type="html">A simple Docker walkthrough</title><link href="/2019/05/24/docker-walkthrough.html" rel="alternate" type="text/html" title="A simple Docker walkthrough" /><published>2019-05-24T00:00:00+05:30</published><updated>2019-05-24T00:00:00+05:30</updated><id>/2019/05/24/docker-walkthrough</id><content type="html" xml:base="/2019/05/24/docker-walkthrough.html">&lt;p&gt;According to &lt;a href=&quot;https://www.docker.com/resources/what-container&quot;&gt;the official docker page&lt;/a&gt; -&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Docker helps programmers to deliver their software in a reliable and consistent manner. Since it has everything required to the application it is designed for, it alleviates the problem of “It works on my PC, don’t know why it doesn’t work on yours!”&lt;/p&gt;
+
+&lt;p&gt;Getting started with Docker is as simple as-&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Download docker community edition for your system from the &lt;a href=&quot;https://www.docker.com/products/docker-desktop&quot;&gt;official docker download link&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;Install docker on your system.&lt;/li&gt;
+  &lt;li&gt;Run Docker on the system.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Now if you open up the terminal and type-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker version&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You should see something like this-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Client: Docker Engine - Community
+ Version:           18.09.2
+ API version:       1.39
+ Go version:        go1.10.8
+ Git commit:        6247962
+ Built:             Sun Feb 10 04:12:39 2019
+ OS/Arch:           darwin/amd64
+ Experimental:      &lt;span class=&quot;nb&quot;&gt;false
+
+&lt;/span&gt;Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.2
+  API version:      1.39 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;minimum version 1.12&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  Go version:       go1.10.6
+  Git commit:       6247962
+  Built:            Sun Feb 10 04:13:06 2019
+  OS/Arch:          linux/amd64
+  Experimental:     &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We have successfully installed docker onto our system. But now, how do we use this wonderful tool for the benefits of a &lt;em&gt;containerised application&lt;/em&gt;?&lt;/p&gt;
+
+&lt;p&gt;Let’s begin with something really simple.
+One of the starting points of writing a Dockerised application is writing something called a Dockerfile.
+The Dockerfile defines how the containerised application is to be built.&lt;/p&gt;
+
+&lt;p&gt;We shall be calling our application docker-example.
+Go to the terminal and create a new project directory and then navigate to it-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; ~/docker-example
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;docker-example&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Suppose we have a program called application.py, a Python3 application that we need to containerise.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;application.py&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;platform&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;platform&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;release&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello! This message is from a container!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The output when the program is run from the computer directly looks like this-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;python3 application.py
+Darwin
+18.5.0
+Hello! This message is from a container!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Open up your favorite text editor and create a file called Dockerfile. You can &lt;a href=&quot;https://docs.docker.com/engine/reference/builder/&quot;&gt;read more about Dockerfiles here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;Dockerfile&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now edit the contents of the file to this-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; python:3&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;WORKDIR&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; /usr/src/app&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;COPY&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; . .&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;CMD&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; [ &quot;python&quot;, &quot;application.py&quot; ]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once the file is saved, drop back into the terminal and type this command-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; docker-example .&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The -t is being used here to &lt;em&gt;tag&lt;/em&gt; the image to the name &lt;em&gt;docker_example&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Docker will download the latest &lt;a href=&quot;https://hub.docker.com/_/python&quot;&gt;python 3 base docker image&lt;/a&gt; first, if it does not exist on your computer.&lt;/p&gt;
+
+&lt;p&gt;After the build is done, you should see an image like this-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Successfully built 403f70f033e0
+Successfully tagged docker-example:latest&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The 403f70f033e0 here is the container id that is built. If we had not specified the tag, it would have only displayed the container id and not the tag.
+In that scenario, tagging could be done by-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker tag 403f70f033e0 docker-example&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;This means our containerised application is ready and we can now run it by the following command-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;docker run docker-example&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;We should be seeing an output similar to this-&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Linux
+4.9.125-linuxkit
+Hello! This message is from a container!&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Note that the output says Linux even though my system is actually Darwin(MacOS). This means our application is running from the docker container and we can start availing all the benefits listed in the first paragraph of this article.&lt;/p&gt;
+
+&lt;p&gt;And there we have it! A really simple walkthrough to Docker. If you managed to follow all the steps correctly, you have successfully run your first containerised application.&lt;/p&gt;
+
+&lt;p&gt;You can find my repository with all the files required for this walkthrough at &lt;a href=&quot;https://github.com/shreyashag/docker-example&quot;&gt;https://github.com/shreyashag/docker-example&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Docker is really much much more than this though, and I hope to follow up this article with more detailed articles on this subject.&lt;/p&gt;</content><author><name></name></author><summary type="html">According to the official docker page -</summary></entry><entry><title type="html">Scraping web tables with requests and pandas</title><link href="/web/2018/08/05/scraping-web-tables-with-requests-and-pandas.html" rel="alternate" type="text/html" title="Scraping web tables with requests and pandas" /><published>2018-08-05T00:00:00+05:30</published><updated>2018-08-05T00:00:00+05:30</updated><id>/web/2018/08/05/scraping-web-tables-with-requests-and-pandas</id><content type="html" xml:base="/web/2018/08/05/scraping-web-tables-with-requests-and-pandas.html">&lt;p&gt;Hey everyone,&lt;/p&gt;
 
 &lt;p&gt;It’s been a long time since I posted something, I’ve been busy with work and other things.
 I’ve written a lot of scrapes recently and while trying to reduce the code I would have to write, I stumbled upon something.&lt;/p&gt;
