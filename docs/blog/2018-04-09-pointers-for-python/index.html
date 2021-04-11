@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Shreyash Agarwal - Blog">
+<title>
+Pointers for Pipenv - Shreyash Agarwal
+</title>
+
+
+
+        
+        <meta property="og:title" content="Pointers for Pipenv - Shreyash Agarwal" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Shreyash Agarwal - Blog"/>
+<meta property="og:url" content="http://example.com/blog/2018-04-09-pointers-for-python/"/>
+<meta property="og:site_name" content="Shreyash Agarwal"/>
+
+
+
+
+<meta property="og:image" content="http://example.com/home/profile.png"/>
+
+
+
+
+        
+<link rel="shortcut icon" href="/img/fav.ico">
+
+
+        
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.912c712459f193c9f111a0f4fe4ba8074edafb7127a95a82109d48a8daa8d805.css" integrity="sha256-kSxxJFnxk8nxEaD0/kuoB07a&#43;3EnqVqCEJ1IqNqo2AU=" crossorigin="anonymous" media="screen">
+
+
+
+
+
+        
+        
+        
+        
+    </head>
+    <body>
+        <section id="top" class="section">
+            
+            <div class="container hero ">
+                
+
+<h1 class="bold-title is-1">Blog</h1>
+
+
+            </div>
+            
+            <div class="section ">
+                
+<div class="container">
+    <hr>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu " id="navMenu">
+            
+            
+            
+            
+            <a class="navbar-item" href="/">
+                
+                Home
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="/#about">
+                
+                About
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="/blog/">
+                
+                Blog
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="pdfs/ShreyashAgarwal-Resume.pdf">
+                
+                Resume
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="pdfs/ShreyashAgarwal-CV.pdf">
+                
+                CV
+                
+            </a>
+            
+            
+            
+        </div>
+    </nav>
+    <hr>
+</div>
+
+
+
+                
+<div class="container">
+    <h2 class="title is-1 top-pad strong-post-title">
+        <a href="http://example.com/blog/2018-04-09-pointers-for-python/">Pointers for Pipenv</a>
+    </h2>
+    <div class="post-data">
+        Apr 9, 2018 |
+        1 minute read
+    </div>
+    
+    <div class="blog-share">
+        Share this:
+        
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=Pointers%20for%20Pipenv%20http%3a%2f%2fexample.com%2fblog%2f2018-04-09-pointers-for-python%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fab fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+        
+        
+        <a class="icon-linkedin" href="https://www.linkedin.com/sharer/sharer.php?u=http%3a%2f%2fexample.com%2fblog%2f2018-04-09-pointers-for-python%2f" onclick="window.open(this.href, 'linkedin-share','width=580,height=296');return false;">
+            <i class="fab fa-linkedin"></i>
+            <span class="hidden">LinkedIn</span>
+        </a>
+        
+        
+        
+    </div>
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+</div>
+
+<div class="container markdown top-pad">
+    <p>Pipenv is a great tool to use, read more about pipenv <a href="https://github.com/pypa/pipenv"><strong>HERE</strong></a>.</p>
+<p>Pipenv generated a lock file that is useful in replicating an exact virutal environment, which can be useful in a lot of cases.</p>
+<p>The best way to install pipenv is to install it using pip but locally, so that all the pipenv environments are also in the .local/ folder inside the user directory.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">pip install -U pipenv</code></pre></div>
+<p>Pipenv works with pew (<a href="https://github.com/berdario/pew">read more about pew here</a>) to create the virtual environments.</p>
+<p>Though pipenv provides the ability to store the virtual environment inside the project folder by setting the <em>VENV_IN_PROJECT</em> environment variable, I prefer not using it like that. There are a couple of benefits to this -</p>
+<ol>
+<li>
+<p>This allows me to keep the codebase isolated from the runtime environment and simply zipping up the code is a much easier process.</p>
+</li>
+<li>
+<p>Having the virtual environment inside the home directory of the user allows for scheduling cron jobs using the user space where the cron job is consequently able to find the virtual environment.</p>
+</li>
+</ol>
+
+</div>
+
+
+<div class="container flex">
+    <div class="">
+        
+        Previously, <a href="http://example.com/blog/2018-08-05-scraping-web-tables-with-requests-and-pandas/">Scraping web tables with requests and pandas</a> on 2018-08-05 00:00:00 &#43;0000 UTC
+        
+    </div>
+    
+    <div>
+        
+        Next, <a href="http://example.com/blog/2017-08-13-implementing-high-scores-in-android/">Implementing High Scores in Android</a> on 2017-08-13 00:00:00 &#43;0000 UTC
+        
+    </div>
+</div>
+
+
+
+
+
+
+                
+                <div class="container">
+    <hr>
+</div>
+<div class="container has-text-centered top-pad">
+    <a href="#top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div class="container">
+    <hr>
+</div>
+
+                <div class="section" id="footer">
+    <div class="container has-text-centered">
+    
+        Thanks for visiting! This page is powered by Hugo and Introduction theme.
+    
+    </div>
+</div>
+
+                
+            </div>
+        </section>
+        
+        
+
+
+<script src="http://example.com/js/bundle.f1741e9868b2f697e71cf8fccfcc12166540999b3d36f8fb9edd0882ba425d55.js" integrity="sha256-8XQemGiy9pfnHPj8z8wSFmVAmZs9Nvj7nt0IgrpCXVU="></script>
+
+
+
+
+
+
+        
+        
+        
+        
+    </body>
+</html>
