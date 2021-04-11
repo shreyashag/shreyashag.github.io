@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+        <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Shreyash Agarwal - Blog">
+<title>
+A Simple Docker Walkthrough - Shreyash Agarwal
+</title>
+
+
+
+        
+        <meta property="og:title" content="A simple Docker walkthrough - Shreyash Agarwal" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="Shreyash Agarwal - Blog"/>
+<meta property="og:url" content="http://example.com/blog/2019-05-24-docker-walkthrough/"/>
+<meta property="og:site_name" content="Shreyash Agarwal"/>
+
+
+
+
+<meta property="og:image" content="http://example.com/home/profile.png"/>
+
+
+
+
+        
+<link rel="shortcut icon" href="/img/fav.ico">
+
+
+        
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.min.912c712459f193c9f111a0f4fe4ba8074edafb7127a95a82109d48a8daa8d805.css" integrity="sha256-kSxxJFnxk8nxEaD0/kuoB07a&#43;3EnqVqCEJ1IqNqo2AU=" crossorigin="anonymous" media="screen">
+
+
+
+
+
+        
+        
+        
+        
+    </head>
+    <body>
+        <section id="top" class="section">
+            
+            <div class="container hero ">
+                
+
+<h1 class="bold-title is-1">Blog</h1>
+
+
+            </div>
+            
+            <div class="section ">
+                
+<div class="container">
+    <hr>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="navbar-menu " id="navMenu">
+            
+            
+            
+            
+            <a class="navbar-item" href="/">
+                
+                Home
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="/#about">
+                
+                About
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="/blog/">
+                
+                Blog
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="pdfs/ShreyashAgarwal-Resume.pdf">
+                
+                Resume
+                
+            </a>
+            
+            
+            
+            <a class="navbar-item" href="pdfs/ShreyashAgarwal-CV.pdf">
+                
+                CV
+                
+            </a>
+            
+            
+            
+        </div>
+    </nav>
+    <hr>
+</div>
+
+
+
+                
+<div class="container">
+    <h2 class="title is-1 top-pad strong-post-title">
+        <a href="http://example.com/blog/2019-05-24-docker-walkthrough/">A simple Docker walkthrough</a>
+    </h2>
+    <div class="post-data">
+        May 24, 2019 |
+        4 minutes read
+    </div>
+    
+    <div class="blog-share">
+        Share this:
+        
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=A%20simple%20Docker%20walkthrough%20http%3a%2f%2fexample.com%2fblog%2f2019-05-24-docker-walkthrough%2f" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+            <i class="fab fa-twitter"></i>
+            <span class="hidden">Twitter</span>
+        </a>
+        
+        
+        <a class="icon-linkedin" href="https://www.linkedin.com/sharer/sharer.php?u=http%3a%2f%2fexample.com%2fblog%2f2019-05-24-docker-walkthrough%2f" onclick="window.open(this.href, 'linkedin-share','width=580,height=296');return false;">
+            <i class="fab fa-linkedin"></i>
+            <span class="hidden">LinkedIn</span>
+        </a>
+        
+        
+        
+    </div>
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+</div>
+
+<div class="container markdown top-pad">
+    <p>According to <a href="https://www.docker.com/resources/what-container">the official docker page</a> -</p>
+<blockquote>
+<p>A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.</p>
+</blockquote>
+<p>Docker helps programmers to deliver their software in a reliable and consistent manner. Since it has everything required to the application it is designed for, it alleviates the problem of &ldquo;It works on my PC, don&rsquo;t know why it doesn&rsquo;t work on yours!&rdquo;</p>
+<p>Getting started with Docker is as simple as-</p>
+<ol>
+<li>Download docker community edition for your system from the <a href="https://www.docker.com/products/docker-desktop">official docker download link</a>.</li>
+<li>Install docker on your system.</li>
+<li>Run Docker on the system.</li>
+</ol>
+<p>Now if you open up the terminal and type-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker version</code></pre></div></p>
+<p>You should see something like this-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Client: Docker Engine - Community
+ Version:           18.09.2
+ API version:       1.39
+ Go version:        go1.10.8
+ Git commit:        <span style="color:#40a070">6247962</span>
+ Built:             Sun Feb <span style="color:#40a070">10</span> 04:12:39 <span style="color:#40a070">2019</span>
+ OS/Arch:           darwin/amd64
+ Experimental:      <span style="color:#007020">false</span>
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          18.09.2
+  API version:      1.39 <span style="color:#666">(</span>minimum version 1.12<span style="color:#666">)</span>
+  Go version:       go1.10.6
+  Git commit:       <span style="color:#40a070">6247962</span>
+  Built:            Sun Feb <span style="color:#40a070">10</span> 04:13:06 <span style="color:#40a070">2019</span>
+  OS/Arch:          linux/amd64
+  Experimental:     false</code></pre></div></p>
+<p>We have successfully installed docker onto our system. But now, how do we use this wonderful tool for the benefits of a <em>containerised application</em>?</p>
+<p>Let&rsquo;s begin with something really simple.
+One of the starting points of writing a Dockerised application is writing something called a Dockerfile.
+The Dockerfile defines how the containerised application is to be built.</p>
+<p>We shall be calling our application docker-example.
+Go to the terminal and create a new project directory and then navigate to it-</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/docker-example
+<span style="color:#007020">cd</span> docker-example</code></pre></div>
+<p>Suppose we have a program called application.py, a Python3 application that we need to containerise.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat application.py</code></pre></div>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">platform</span>
+<span style="color:#007020;font-weight:bold">print</span>(platform<span style="color:#666">.</span>system())
+<span style="color:#007020;font-weight:bold">print</span>(platform<span style="color:#666">.</span>release())
+<span style="color:#007020;font-weight:bold">print</span>(<span style="color:#4070a0">&#34;Hello! This message is from a container!&#34;</span>)</code></pre></div>
+<p>The output when the program is run from the computer directly looks like this-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">python3 application.py
+Darwin
+18.5.0
+Hello! This message is from a container!</code></pre></div></p>
+<p>Open up your favorite text editor and create a file called Dockerfile. You can <a href="https://docs.docker.com/engine/reference/builder/">read more about Dockerfiles here</a>.
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">touch Dockerfile</code></pre></div></p>
+<p>Now edit the contents of the file to this-</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker"><span style="color:#007020;font-weight:bold">FROM</span><span style="color:#4070a0"> python:3</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#007020;font-weight:bold">WORKDIR</span><span style="color:#4070a0"> /usr/src/app</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#007020;font-weight:bold">COPY</span> . .<span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#007020;font-weight:bold">CMD</span> [ <span style="color:#4070a0">&#34;python&#34;</span>, <span style="color:#4070a0">&#34;application.py&#34;</span> ]</code></pre></div>
+<p>Once the file is saved, drop back into the terminal and type this command-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker build -t docker-example .</code></pre></div></p>
+<p>The -t is being used here to <em>tag</em> the image to the name <em>docker_example</em>.</p>
+<p>Docker will download the latest <a href="https://hub.docker.com/_/python">python 3 base docker image</a> first, if it does not exist on your computer.</p>
+<p>After the build is done, you should see an image like this-</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Successfully built 403f70f033e0
+Successfully tagged docker-example:latest</code></pre></div>
+<p>The 403f70f033e0 here is the container id that is built. If we had not specified the tag, it would have only displayed the container id and not the tag.
+In that scenario, tagging could be done by-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker tag 403f70f033e0 docker-example</code></pre></div></p>
+<p>This means our containerised application is ready and we can now run it by the following command-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run docker-example</code></pre></div></p>
+<p>We should be seeing an output similar to this-
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Linux
+4.9.125-linuxkit
+Hello! This message is from a container!</code></pre></div></p>
+<p>Note that the output says Linux even though my system is actually Darwin(MacOS). This means our application is running from the docker container and we can start availing all the benefits listed in the first paragraph of this article.</p>
+<p>And there we have it! A really simple walkthrough to Docker. If you managed to follow all the steps correctly, you have successfully run your first containerised application.</p>
+<p>You can find my repository with all the files required for this walkthrough at <a href="https://github.com/shreyashag/docker-example">this sample github repo</a>.</p>
+<p>Docker is really much much more than this though, and I hope to follow up this article with more detailed articles on this subject.</p>
+
+</div>
+
+
+<div class="container flex">
+    <div class="">
+        
+    </div>
+    
+    <div>
+        
+        Next, <a href="http://example.com/blog/2018-08-05-scraping-web-tables-with-requests-and-pandas/">Scraping web tables with requests and pandas</a> on 2018-08-05 00:00:00 &#43;0000 UTC
+        
+    </div>
+</div>
+
+
+
+
+
+
+                
+                <div class="container">
+    <hr>
+</div>
+<div class="container has-text-centered top-pad">
+    <a href="#top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+</div>
+
+<div class="container">
+    <hr>
+</div>
+
+                <div class="section" id="footer">
+    <div class="container has-text-centered">
+    
+        Thanks for visiting! This page is powered by Hugo and Introduction theme.
+    
+    </div>
+</div>
+
+                
+            </div>
+        </section>
+        
+        
+
+
+<script src="http://example.com/js/bundle.f1741e9868b2f697e71cf8fccfcc12166540999b3d36f8fb9edd0882ba425d55.js" integrity="sha256-8XQemGiy9pfnHPj8z8wSFmVAmZs9Nvj7nt0IgrpCXVU="></script>
+
+
+
+
+
+
+        
+        
+        
+        
+    </body>
+</html>

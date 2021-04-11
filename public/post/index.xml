@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Shreyash Agarwal&#39;s Blog</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on Shreyash Agarwal&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A simple Docker walkthrough</title>
+      <link>/post/2019-05-24-docker-walkthrough/</link>
+      <pubDate>Fri, 24 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2019-05-24-docker-walkthrough/</guid>
+      <description>According to the official docker page -
+ A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries and settings.
+ Docker helps programmers to deliver their software in a reliable and consistent manner.</description>
+    </item>
+    
+    <item>
+      <title>Scraping web tables with requests and pandas</title>
+      <link>/post/2018-08-05-scraping-web-tables-with-requests-and-pandas/</link>
+      <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-08-05-scraping-web-tables-with-requests-and-pandas/</guid>
+      <description>Hey everyone,
+It&amp;rsquo;s been a long time since I posted something, I&amp;rsquo;ve been busy with work and other things. I&amp;rsquo;ve written a lot of scrapes recently and while trying to reduce the code I would have to write, I stumbled upon something.
+Have you heard about Pandas?It&amp;rsquo;s a fantastic library which not only is useful for maintaining data structures in it&amp;rsquo;s famous Dataframe, but also helped me cut out BeautifulSoup (another awesome library which I used to use for web parsing) completely!</description>
+    </item>
+    
+    <item>
+      <title>Pointers for Pipenv</title>
+      <link>/post/2018-04-09-pointers-for-python/</link>
+      <pubDate>Mon, 09 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-04-09-pointers-for-python/</guid>
+      <description>Pipenv is a great tool to use, read more about pipenv HERE.
+Pipenv generated a lock file that is useful in replicating an exact virutal environment, which can be useful in a lot of cases.
+The best way to install pipenv is to install it using pip but locally, so that all the pipenv environments are also in the .local/ folder inside the user directory.
+pip install -U pipenv Pipenv works with pew (read more about pew HERE) to create the virtual environments.</description>
+    </item>
+    
+    <item>
+      <title>Implementing High Scores in Android</title>
+      <link>/post/2017-08-13-implementing-high-scores-in-android/</link>
+      <pubDate>Sun, 13 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-08-13-implementing-high-scores-in-android/</guid>
+      <description>To implement high scores in an Android game, there are a few options-
+ To use LocalStorage. To use a DB locally. To use a cloud based DB service, such as FireCloud.  In this post I will be describing about how I have implemented highscores for my application QuizApp using LocalStorage. I will be talking about the other two in a later post.
+SharedPreferences is used to setup an acess to key-value pairs that can be stored locally on the device.</description>
+    </item>
+    
+    <item>
+      <title>QuizApp! for Android- What I learned developing my own quiz app</title>
+      <link>/post/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/</link>
+      <pubDate>Fri, 28 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-07-28-quizapp-for-android-what-i-learned-developing-my-own-quiz-app/</guid>
+      <description>I have been using Android for the longest time I can remember, and I have never owned an iPhone. I love the Android platform and the openness it provides. My current device is a OnePlus One that is running Slim7 ROM.
+Android development has been on and off for me, but I was pretty familiar with Android because of my experience working in Ionic framework and a course in my college Curriculum called Mobile Application Development.</description>
+    </item>
+    
+    <item>
+      <title>How I got HTTPS for free for my domain</title>
+      <link>/post/2017-07-21-how-i-got-https-for-free-for-my-domain/</link>
+      <pubDate>Fri, 21 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-07-21-how-i-got-https-for-free-for-my-domain/</guid>
+      <description>Getting https in important in today&amp;rsquo;s world, it conveys authenticity and trust to the user visiting a website. From what Google has to say about HTTPS-
+ HTTPS protects the integrity of your website HTTPS protects the privacy and security of your users HTTPS is the future of the web  How can you get HTTPS for free?  Go to Cloudflare.com and create a new account. After creating your account, register your domain name with Cloudflare.</description>
+    </item>
+    
+    <item>
+      <title>Welcome to My Blog!</title>
+      <link>/post/2017-07-19-welcome-to-my-blog/</link>
+      <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2017-07-19-welcome-to-my-blog/</guid>
+      <description>Hello and welcome to my blog. You can read more about me here. I have previously used blogs on wordpress and blogger. On wordpress to write a blog called Pi2Projects, where I wrote about my experiments with the Raspberry Pi 2. I have pulled the blog down, and now this blog will be my main blogging medium now.
+Speaking of medium, I also have a profile there, you can follow me @shreyashag.</description>
+    </item>
+    
+  </channel>
+</rss>

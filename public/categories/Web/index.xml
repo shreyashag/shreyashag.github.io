@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web on Shreyash Agarwal&#39;s Blog</title>
+    <link>/categories/Web/</link>
+    <description>Recent content in Web on Shreyash Agarwal&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Aug 2018 00:00:00 +0000</lastBuildDate><atom:link href="/categories/Web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Scraping web tables with requests and pandas</title>
+      <link>/post/2018-08-05-scraping-web-tables-with-requests-and-pandas/</link>
+      <pubDate>Sun, 05 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-08-05-scraping-web-tables-with-requests-and-pandas/</guid>
+      <description>Hey everyone,
+It&amp;rsquo;s been a long time since I posted something, I&amp;rsquo;ve been busy with work and other things. I&amp;rsquo;ve written a lot of scrapes recently and while trying to reduce the code I would have to write, I stumbled upon something.
+Have you heard about Pandas?It&amp;rsquo;s a fantastic library which not only is useful for maintaining data structures in it&amp;rsquo;s famous Dataframe, but also helped me cut out BeautifulSoup (another awesome library which I used to use for web parsing) completely!</description>
+    </item>
+    
+  </channel>
+</rss>
